@@ -15,18 +15,24 @@ class MyApp extends StatelessWidget {
         appBar: AppBar(
           title: const Text('App Title'),
         ),
-        body: const Text('Body'),
+        body: const Center(child: Text('Body'),),
 
         bottomNavigationBar:BottomNavigationBar(
           items: const [
           BottomNavigationBarItem(
             label: 'Home',
-            icon: Icon(Icons.home)
+            icon: Icon(Icons.home,
+            color: Color.fromARGB(0, 5, 5, 243),
+            ),
           ),
           BottomNavigationBarItem(
-            label: 'Timer',
-            icon: Icon(Icons.av_timer))
-        ]),
+            label: 'settings',
+            icon: Icon(Icons.settings,
+            color: Colors.deepOrange,
+            ),
+            ),
+        ],
+        ),
       ),
          
     );

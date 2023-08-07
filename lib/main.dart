@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import 'next_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -14,9 +15,7 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   
-  
-
-  @override
+    @override
   Widget build(BuildContext context) {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
@@ -36,6 +35,7 @@ class FirstPage extends StatefulWidget {
 class _FirstPageState extends State<FirstPage> {
   String buttonName = 'Next Page';
   int currentIndex = 0;
+  bool _isClicked = false;
 
   @override
   Widget build(BuildContext context) {
@@ -78,7 +78,14 @@ class _FirstPageState extends State<FirstPage> {
             ],
           ),
         ) 
-        : Image.asset('images/bite.png'),
+        : GestureDetector(
+          onTap: () {
+            setState(() {
+              _isClicked = !_isClicked;
+            });
+          },
+          child: _isClicked ? Image.asset('images/bite.png') : Image.network('https://www.thoughtco.com/static/3.159.0/images/hp-science,tech,math.png'),
+        ),
         ),
 
         bottomNavigationBar:BottomNavigationBar(
@@ -94,7 +101,7 @@ class _FirstPageState extends State<FirstPage> {
             ),
             ),
         ],
-        currentIndex: currentIndex,   
+        currentIndex: currentIndex,    
         onTap: (int index) {
           setState(() {
             currentIndex = index;
@@ -105,21 +112,3 @@ class _FirstPageState extends State<FirstPage> {
   }
 }
 
-class SecondPage extends StatelessWidget {
-  const SecondPage({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.yellow,
-      ),
-      body: const Center(
-        child: Card(
-          color: Colors.green,
-          child: Text('This is a flutter test app'),
-          ),
-      ),
-    );
-  }
-}
